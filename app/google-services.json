@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93874265541",
+    "project_id": "hijob-f311b",
+    "storage_bucket": "hijob-f311b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93874265541:android:31e206da5e883ebc987fac",
+        "android_client_info": {
+          "package_name": "com.example.hijob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93874265541-2rik3eqhvflslctioofbpcakjioab5k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9F_9Z2tUSc7_cHSQmzEbwtrJAUXMmhbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93874265541-2rik3eqhvflslctioofbpcakjioab5k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
