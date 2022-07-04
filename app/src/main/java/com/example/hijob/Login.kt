@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.hijob.databinding.ActivityLoginBinding
 import com.example.hijob.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -40,6 +41,30 @@ class Login : AppCompatActivity() {
 
         binding.googleSignIn.setOnClickListener {
             signIn()
+        }
+
+        binding.registerBtn.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
+
+        binding.loginBtn.setOnClickListener {
+            val email = binding.email.text.toString()
+            val pass = binding.password.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 
