@@ -1,58 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="center"
+tools:context=".Register"
+android:orientation="vertical"
+android:padding="20dp">
+
+<TextView
+    android:id="@+id/login_title"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".Login">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="@string/register_title"
+    style="@style/Title"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/email"
+<TextView
+    android:id="@+id/login_subtitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:text="@string/register_subtitle"
+    style="@style/SubTitle"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/login_title"/>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/til_email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:hint="@string/login_email"
+    style="@style/TextInputLayout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/login_subtitle"
+    app:startIconDrawable="@drawable/ic_email"
+    >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp" />
+        style="@style/TextInputEditText"
+        />
+</com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/password"
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/til_password"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:hint="@string/login_password"
+    style="@style/TextInputLayout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/til_email"
+    app:startIconDrawable="@drawable/ic_circle_account"
+    >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Password"
         android:inputType="textPassword"
-        android:maxLines="1"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp" />
+        style="@style/TextInputEditText"
+        />
+</com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/repeatPassword"
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_repeatPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp" />
+        android:layout_marginTop="15dp"
+        android:hint="@string/register_repeatPassword"
+        style="@style/TextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_email"
+        app:startIconDrawable="@drawable/ic_circle_account"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_repeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            style="@style/TextInputEditText"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/registerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:text="Registrarse" />
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/registerBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:enabled="false"
+    android:text="@string/btn_register"
+    android:layout_marginTop="40dp"
+    />
 
+<TextView
+    android:id="@+id/havent_account"
+    style="@style/SubTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="@string/havent_account"
+    android:textAlignment="center"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>

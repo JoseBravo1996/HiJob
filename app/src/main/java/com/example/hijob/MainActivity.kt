@@ -36,6 +36,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        binding.btnLogin.setOnClickListener{
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnRegister.setOnClickListener{
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("93874265541-2rik3eqhvflslctioofbpcakjioab5k4.apps.googleusercontent.com")
             .requestEmail()
@@ -45,9 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        binding.googleSignIn.setOnClickListener{
-            signIn()
-        }
+
     }
 
     override fun onStart() {

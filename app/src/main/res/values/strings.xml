@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">HiJob</string>
+    <string name="started_title">HiJob</string>
+    <string name="started_sub_title">
+        Bienvenido ! Encantado de conocerte, únete para tener una cuenta.
+        \n
+        <br><b>Ingresá </b>si ya tenes una cuenta.</br>
+        \n
+        <br><b>Creá tu cuenta </b>si deseas tener una.</br>
+    </string>
+    <string name="btn_login">Ingresá</string>
+    <string name="btn_register">REGISTRAR</string>
+    <string name="login_title">Iniciar sesión en la aplicación</string>
+    <string name="login_subtitle"><font color="#00C9B8">Inicia sesión</font>si ya tienes una cuenta</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Contraseña</string>
+    <string name="register_repeatPassword">Repetir Contraseña</string>
+    <string name="forgot_pass">¿Olvido su contraseña?</string>
+    <string name="nohavent_account">¿Necesitas ayuda? <font color="#00C9B8">Registrate</font></string>
+    <string name="havent_account">¿Tenes una cuenta? <font color="#00C9B8">Ingresa</font></string>
+    <string name="register_title">Crea una cuenta</string>
+    <string name="register_subtitle">
+        <font color="#00C9B8">Registrese</font>
+        para comenzar con la aplicación.
+    </string>
 </resources>

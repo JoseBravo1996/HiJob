@@ -3,7 +3,10 @@ package com.example.hijob
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.util.Patterns
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import com.example.hijob.databinding.ActivityLoginBinding.inflate
 import com.example.hijob.databinding.ActivityMainBinding.inflate
 import com.example.hijob.databinding.ActivityRegisterBinding
@@ -21,18 +24,25 @@ class Register : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        emailFocusListener()
+
         firebaseAuth = FirebaseAuth.getInstance()
 
+        binding.haventAccount.setOnClickListener {
+            goToLogin()
+        }
+
         binding.registerBtn.setOnClickListener {
-            val email = binding.email.text.toString()
-            val pass = binding.password.text.toString()
-            val confirmPass = binding.repeatPassword.text.toString()
+            val email = binding.etEmail.text.toString()
+            val pass = binding.etPassword.text.toString()
+            val confirmPass = binding.etRepeatPassword.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, Register::class.java)
+                            Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, Login::class.java)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -46,5 +56,24 @@ class Register : AppCompatActivity() {
             }
 
         }
+    }
+
+    fun goToLogin(){
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+    }
+
+    private fun emailFocusListener(){
+        binding.etEmail.setOnFocusChangeListener{_, focused ->
+            if(!focused){
+                if(Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString()).matches()) {
+                    binding.registerBtn.isEnabled = true
+                }else{
+                    binding.registerBtn.isEnabled = false
+                    binding.registerBtn.error = "Email invalido"
+                }
+            }
+        }
+
     }
 }

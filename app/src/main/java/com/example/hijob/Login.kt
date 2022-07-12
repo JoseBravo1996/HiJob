@@ -43,19 +43,19 @@ class Login : AppCompatActivity() {
             signIn()
         }
 
-        binding.registerBtn.setOnClickListener {
+        binding.haventAccount.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
 
         binding.loginBtn.setOnClickListener {
-            val email = binding.email.text.toString()
-            val pass = binding.password.text.toString()
+            val email = binding.etEmail.text.toString()
+            val pass = binding.etPassword.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -117,6 +117,7 @@ class Login : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         Log.d(TAG, "Usuario: " + user)
+      
     }
 
     companion object {

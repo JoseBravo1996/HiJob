@@ -4,12 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/bg_button.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/bg_text_field.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_account.xml" value="0.132" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_circle_account.xml" value="0.111" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_email.xml" value="0.111" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_google_svgrepo_com.xml" value="0.1" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_lock.xml" value="0.111" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_wave__1_.xml" value="0.1085" />
-        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_login.xml" value="0.21" />
-        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_register.xml" value="0.15" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_home.xml" value="0.1484375" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_job_list.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/job_item.xml" value="0.1" />
       </map>
     </option>
   </component>
