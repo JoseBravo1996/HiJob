@@ -15,9 +15,9 @@ class MyAdapter(private val jobList: ArrayList<Job>) : RecyclerView.Adapter<MyAd
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = jobList[position]
-      //  currentItem.category.text = currentItem.category
-      //  currentItem.company.text = currentItem.company
-      //  currentItem.description.text = currentItem.description
+       // currentItem.category.text = currentItem.category
+       // currentItem.company.text = currentItem.company
+       // currentItem.description.text = currentItem.description
     }
 
     override fun getItemCount(): Int {
@@ -25,8 +25,8 @@ class MyAdapter(private val jobList: ArrayList<Job>) : RecyclerView.Adapter<MyAd
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-       // val category: TextView = itemView.findViewById()
-       // val company: TextView = itemView.findViewById()
+    //    val category: TextView = itemView.findViewById()
+     //   val company: TextView = itemView.findViewById()
        // val description: TextView = itemView.findViewById()
     }
 

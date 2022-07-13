@@ -2,8 +2,10 @@ package com.example.hijob
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hijob.placeholder.PlaceholderContent;
 import com.example.hijob.databinding.FragmentItemListBinding
 import com.example.hijob.databinding.ItemListContentBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 /**
  * A Fragment representing a list of Pings. This fragment
@@ -35,6 +38,8 @@ class ItemListFragment : Fragment() {
      * Currently provides a toast when Ctrl + Z and Ctrl + F
      * are triggered
      */
+    var db = FirebaseFirestore.getInstance()
+
     private val unhandledKeyEventListenerCompat = ViewCompat.OnUnhandledKeyEventListenerCompat { v, event ->
         if (event.keyCode == KeyEvent.KEYCODE_Z && event.isCtrlPressed) {
             Toast.makeText(
@@ -97,6 +102,8 @@ class ItemListFragment : Fragment() {
             } else {
                 itemView.findNavController().navigate(R.id.show_item_detail, bundle)
             }
+
+            getJobs()
         }
 
         /**
@@ -196,5 +203,21 @@ class ItemListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun getJobs(){
+        Log.d(ContentValues.TAG, "CONSULTO DB")
+        db.collection("JobOffer")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    for (document in task.result) {
+                        Log.d(ContentValues.TAG,"SuperUsuario" + document.id + " => " + document.data)
+                        Log.d(ContentValues.TAG, document.id + " => " + document.data)
+                    }
+                } else {
+                    Log.w(ContentValues.TAG, "Error getting documents.", task.exception)
+                }
+            }
     }
 }

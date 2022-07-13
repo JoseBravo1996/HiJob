@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.hijob.databinding.ActivityMainBinding
+import com.example.hijob.sesion.UserApplication.Companion.prefs
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.CredentialSavingClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        checkUserExists()
 
         binding.btnLogin.setOnClickListener{
             val intent = Intent(this, Login::class.java)
@@ -57,6 +58,17 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
 
+    }
+
+    fun checkUserExists(){
+        if(prefs.getUser()?.isNotEmpty() == true){
+            goToHome()
+        }
+    }
+
+    fun goToHome(){
+        val intent = Intent(this, ItemDetailHostActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {
