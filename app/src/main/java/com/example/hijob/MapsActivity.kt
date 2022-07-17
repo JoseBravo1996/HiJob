@@ -1,10 +1,12 @@
 package com.example.hijob
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -14,10 +16,25 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
+import com.google.firebase.firestore.PropertyName
+import java.util.*
+import kotlin.random.Random.Default.nextInt
+
+// jobs
+data class JobOffer(
+    @get: PropertyName("active") @set: PropertyName("active") var active: Boolean = false,
+    @get: PropertyName("category") @set: PropertyName("category") var category: String = "",
+    @get: PropertyName("company") @set: PropertyName("company") var company: String = "",
+    @get: PropertyName("position") @set: PropertyName("position") var position: String = "",
+)
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationClickListener {
 
     private lateinit var map: GoogleMap
+    var db = FirebaseFirestore.getInstance()
+    val allJobOffers = mutableListOf<JobOffer>()
 
     companion object {
         const val REQUEST_CODE_LOCATION = 0
@@ -27,6 +44,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         createFragment()
+        getJobs()
     }
 
     private fun createFragment() {
@@ -45,11 +63,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         val coordinates = LatLng(-34.77466314405586, -58.267594112801284)
         val marker = MarkerOptions().position(coordinates).title("UNAJ")
         map.addMarker(marker)
-        map.animateCamera(
+        /*map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(coordinates, 10f),
             4000,
             null
-        )
+        )*/
+    }
+
+    private fun createJobOfferMakers() {
+        allJobOffers.forEach { job ->
+            val coords = LatLng(-34.77 * Math.random(), -58.267594112801284 * Math.random())
+            val mk = map.addMarker(
+                MarkerOptions()
+                    .title("${job.position} (${job.category})").snippet("en ${job.company}")
+                    .position(coords)
+            )
+            // Set place as the tag on the marker object so it can be referenced within
+            // MarkerInfoWindowAdapter
+        }
+
     }
     // Real time location
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -99,5 +131,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     override fun onMyLocationClick(p0: Location) {
         Toast.makeText(this, "Estas en ${p0.latitude}, ${p0.longitude}", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun getJobs(){
+        db.collection("JobOffer")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val job = document.toObject(JobOffer::class.java)
+                    allJobOffers.add(job)
+                }
+                createJobOfferMakers()
+            }
     }
 }
