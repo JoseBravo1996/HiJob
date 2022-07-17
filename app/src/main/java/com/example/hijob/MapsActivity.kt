@@ -1,13 +1,15 @@
 package com.example.hijob
 
 import android.Manifest
-import android.content.ContentValues
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Criteria
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
+import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,10 +19,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.PropertyName
 import java.util.*
-import kotlin.random.Random.Default.nextInt
+
 
 // jobs
 data class JobOffer(
@@ -46,7 +47,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         createFragment()
-        getJobs()
     }
 
     private fun createFragment() {
@@ -54,11 +54,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         mapFragment.getMapAsync(this)
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(gogleMap: GoogleMap) {
         map = gogleMap
         // createUNAJMaker()
         map.setOnMyLocationClickListener(this)
         enableMyLocation()
+        getJobs()
     }
 
     private fun createUNAJMaker() {
@@ -93,6 +95,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         if (!::map.isInitialized) return
         if (isPermissionsGranted()) {
             map.isMyLocationEnabled = true
+            zoomOnMyLocation()
         } else {
             requestLocationPermission()
         }
@@ -115,6 +118,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         when(requestCode){
             REQUEST_CODE_LOCATION -> if(grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
                 map.isMyLocationEnabled = true
+                zoomOnMyLocation()
             }else{
                 Toast.makeText(this, "Para activar la localización ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
             }
@@ -134,6 +138,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     override fun onMyLocationClick(p0: Location) {
         Toast.makeText(this, "Estas en ${p0.latitude}, ${p0.longitude}", Toast.LENGTH_SHORT).show()
+    }
+
+    @SuppressLint("MissingPermission")
+    fun zoomOnMyLocation() {
+        val lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        var myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+        if (myLocation == null) {
+            val criteria = Criteria()
+            criteria.accuracy = Criteria.ACCURACY_COARSE
+            val provider = lm.getBestProvider(criteria, true)
+            myLocation = lm.getLastKnownLocation(provider!!)
+        }
+
+        if (myLocation != null) {
+            val userLocation = LatLng(myLocation.latitude, myLocation.longitude)
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 14f), 1500, null)
+        }
     }
 
     private fun getJobs(){
