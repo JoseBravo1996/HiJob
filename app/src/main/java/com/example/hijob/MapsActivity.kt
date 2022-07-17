@@ -16,22 +16,12 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.PropertyName
 import java.util.*
-
-
-// jobs
-data class JobOffer(
-    @get: PropertyName("active") @set: PropertyName("active") var active: Boolean = false,
-    @get: PropertyName("category") @set: PropertyName("category") var category: String = "",
-    @get: PropertyName("company") @set: PropertyName("company") var company: String = "",
-    @get: PropertyName("position") @set: PropertyName("position") var position: String = "",
-    @get: PropertyName("lat") @set: PropertyName("lat") var lat: Double = 0.0,
-    @get: PropertyName("long") @set: PropertyName("long") var long: Double = 0.0,
-)
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationClickListener {
 
@@ -59,6 +49,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         map = gogleMap
         // createUNAJMaker()
         map.setOnMyLocationClickListener(this)
+        // custom marker
+        map.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
         enableMyLocation()
         getJobs()
     }
@@ -81,9 +73,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
                 val mk = map.addMarker(
                     MarkerOptions()
                         .title("${job.position} (${job.category})")
-                        .snippet("en ${job.company}")
                         .position(coordinates)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
                 )
+                // Set place as the tag on the marker object so it can be referenced within
+                // MarkerInfoWindowAdapter
+                mk.tag = job
             }
         }
 
