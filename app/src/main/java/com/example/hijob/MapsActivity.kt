@@ -20,14 +20,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.PropertyName
-import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationClickListener {
 
     private lateinit var map: GoogleMap
     var db = FirebaseFirestore.getInstance()
-    val allJobOffers = mutableListOf<JobOffer>()
+    private val allJobOffers = mutableListOf<JobOffer>()
 
     companion object {
         const val REQUEST_CODE_LOCATION = 0
