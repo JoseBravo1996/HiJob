@@ -28,6 +28,8 @@ data class JobOffer(
     @get: PropertyName("category") @set: PropertyName("category") var category: String = "",
     @get: PropertyName("company") @set: PropertyName("company") var company: String = "",
     @get: PropertyName("position") @set: PropertyName("position") var position: String = "",
+    @get: PropertyName("lat") @set: PropertyName("lat") var lat: Double = 0.0,
+    @get: PropertyName("long") @set: PropertyName("long") var long: Double = 0.0,
 )
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationClickListener {
@@ -54,7 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     override fun onMapReady(gogleMap: GoogleMap) {
         map = gogleMap
-        createUNAJMaker()
+        // createUNAJMaker()
         map.setOnMyLocationClickListener(this)
         enableMyLocation()
     }
@@ -63,23 +65,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         val coordinates = LatLng(-34.77466314405586, -58.267594112801284)
         val marker = MarkerOptions().position(coordinates).title("UNAJ")
         map.addMarker(marker)
-        /*map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordinates, 10f),
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(coordinates, 15f),
             4000,
             null
-        )*/
+        )
     }
 
     private fun createJobOfferMakers() {
         allJobOffers.forEach { job ->
-            val coords = LatLng(-34.77 * Math.random(), -58.267594112801284 * Math.random())
-            val mk = map.addMarker(
-                MarkerOptions()
-                    .title("${job.position} (${job.category})").snippet("en ${job.company}")
-                    .position(coords)
-            )
-            // Set place as the tag on the marker object so it can be referenced within
-            // MarkerInfoWindowAdapter
+            if(job.active) {
+                val coordinates = LatLng(job.lat, job.long)
+                val mk = map.addMarker(
+                    MarkerOptions()
+                        .title("${job.position} (${job.category})")
+                        .snippet("en ${job.company}")
+                        .position(coordinates)
+                )
+            }
         }
 
     }
