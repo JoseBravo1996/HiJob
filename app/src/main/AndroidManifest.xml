@@ -15,9 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HiJob">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".MapsActivity"
             android:exported="false" />
@@ -27,6 +29,13 @@
         <activity
             android:name=".Register"
             android:theme="@style/Theme.HiJob.NoActionBar" />
+        <activity
+            android:name=".JobListActivity"
+            android:theme="@style/Theme.HiJob.NoActionBar" />
+        <activity
+            android:name=".jobOffer.JobOfferActivity"
+            android:theme="@style/Theme.HiJob.NoActionBar" />
+
         <activity
             android:name=".Login"
             android:exported="false"

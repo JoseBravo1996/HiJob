@@ -61,9 +61,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkUserExists(){
-        if(prefs.getUser()?.isNotEmpty() == true){
-            goToHome()
-        }
+     //   if(prefs.getUser()?.isNotEmpty() == true){
+       //     goToHome()
+        //}
     }
 
     fun goToHome(){

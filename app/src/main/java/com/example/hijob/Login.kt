@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.hijob.databinding.ActivityLoginBinding
 import com.example.hijob.databinding.ActivityMainBinding
+import com.example.hijob.jobOffer.JobOfferActivity
 import com.example.hijob.sesion.UserApplication.Companion.prefs
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -56,8 +57,8 @@ class Login : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        auth.currentUser?.let { it1 -> prefs.saveUser(it1) }
-                        val intent = Intent(this, ItemDetailHostActivity::class.java)
+                   //     auth.currentUser?.let { it1 -> prefs.saveUser(it1) }
+                        val intent = Intent(this, JobOfferActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -101,11 +102,11 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
+                       Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    if (user != null) {
-                        prefs.saveUser(user)
-                    }
+                  //  if (user != null) {
+                    //    prefs.saveUser(user)
+                    //}
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.

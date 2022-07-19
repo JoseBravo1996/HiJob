@@ -5,6 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hijob.entities.Job
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MyAdapter(private val jobList: ArrayList<Job>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
@@ -15,9 +19,14 @@ class MyAdapter(private val jobList: ArrayList<Job>) : RecyclerView.Adapter<MyAd
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = jobList[position]
-       // currentItem.category.text = currentItem.category
-       // currentItem.company.text = currentItem.company
-       // currentItem.description.text = currentItem.description
+      //  holder.company.text = currentItem.company
+       // holder.position.text = currentItem.position
+        //holder.date.text = getDate(currentItem.date!!).toString()
+
+
+    }
+    private fun getDate(time: Date): String? {
+        return SimpleDateFormat("dd/MM/yyyy").format(time)
     }
 
     override fun getItemCount(): Int {
@@ -25,9 +34,9 @@ class MyAdapter(private val jobList: ArrayList<Job>) : RecyclerView.Adapter<MyAd
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-    //    val category: TextView = itemView.findViewById()
-     //   val company: TextView = itemView.findViewById()
-       // val description: TextView = itemView.findViewById()
+       // val company: TextView = itemView.findViewById(R.id.company)
+       // val position: TextView = itemView.findViewById(R.id.position)
+        //val date: TextView = itemView.findViewById(R.id.date)
     }
 
 }

@@ -5,15 +5,17 @@
     android:id="@+id/containerMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JobListActivity">
+    android:background="@color/grey_light"
+    tools:context=".jobOffer.JobOfferActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/jobList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/job_item"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

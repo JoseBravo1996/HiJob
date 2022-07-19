@@ -27,9 +27,7 @@ class ItemDetailHostActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        if(prefs.getUser()?.isNotEmpty() == true){
-            Log.d(TAG, "GUARDADOOOOO")
-        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
