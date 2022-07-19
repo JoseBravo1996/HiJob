@@ -31,10 +31,10 @@
             android:theme="@style/Theme.HiJob.NoActionBar" />
         <activity
             android:name=".JobListActivity"
-            android:theme="@style/Theme.HiJob.NoActionBar" />
+            android:theme="@style/Theme.HiJob" />
         <activity
             android:name=".jobOffer.JobOfferActivity"
-            android:theme="@style/Theme.HiJob.NoActionBar" />
+            android:theme="@style/Theme.HiJob" />
 
         <activity
             android:name=".Login"

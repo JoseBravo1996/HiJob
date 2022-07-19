@@ -3,15 +3,18 @@ package com.example.hijob
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Criteria
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.hijob.jobOffer.JobOfferActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationClickListener {
@@ -35,6 +39,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         createFragment()
+        addActionsToNav()
+    }
+
+    private fun addActionsToNav() {
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        navView.selectedItemId = R.id.maps
+        navView.setOnItemSelectedListener { menuItem: MenuItem ->
+            when(menuItem.itemId) {
+                R.id.home -> {
+                    val intent: Intent = Intent(this, JobOfferActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.maps -> {
+                    return@setOnItemSelectedListener true
+                }
+                else -> return@setOnItemSelectedListener true
+            }
+        }
     }
 
     private fun createFragment() {

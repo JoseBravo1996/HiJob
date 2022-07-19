@@ -1,14 +1,18 @@
 package com.example.hijob.jobOffer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.hijob.MapsActivity
 import com.example.hijob.R
 import com.example.hijob.databinding.ActivityJobOfferBinding
 import com.example.hijob.entities.Job
 import com.example.hijob.jobDetail.JobAux
 import com.example.hijob.jobDetail.JobFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -25,9 +29,30 @@ class JobOfferActivity : AppCompatActivity(), OnJobListener, JobAux {
         super.onCreate(savedInstanceState)
         binding = ActivityJobOfferBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        addActionsToNav()
         setupRecyclerView()
         setupFirestone()
+    }
+
+    private fun addActionsToNav() {
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        navView.selectedItemId = R.id.home
+        navView.setOnItemSelectedListener { menuItem: MenuItem ->
+            when(menuItem.itemId) {
+                R.id.home -> {
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.maps -> {
+                    val intent: Intent = Intent(this, MapsActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnItemSelectedListener true
+                }
+                else -> return@setOnItemSelectedListener true
+            }
+        }
     }
 
     private fun setupRecyclerView(){

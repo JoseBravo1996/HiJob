@@ -1,12 +1,12 @@
 package com.example.hijob
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hijob.entities.Job
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -19,25 +19,27 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        getJobs()
+        addActionsToNav()
     }
 
-    private fun getJobs(){
-
-        db.collection("JobOffer")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result) {
-                        Log.d(ContentValues.TAG,"SuperUsuario" + document.id + " => " + document.data)
-                        Log.d(TAG, document.id + " => " + document.data)
-                    }
-                } else {
-                    Log.w(TAG, "Error getting documents.", task.exception)
+    private fun addActionsToNav() {
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        navView.selectedItemId = R.id.home
+        navView.setOnItemSelectedListener { menuItem: MenuItem ->
+            when(menuItem.itemId) {
+                R.id.home -> {
+                    return@setOnItemSelectedListener true
                 }
+
+                R.id.maps -> {
+                    val intent: Intent = Intent(this, MapsActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnItemSelectedListener true
+                }
+                else -> return@setOnItemSelectedListener true
             }
+        }
     }
-
-
 }
