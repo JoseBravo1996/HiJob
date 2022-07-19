@@ -13,23 +13,19 @@
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_lock.xml" value="0.111" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/drawable/ic_wave__1_.xml" value="0.1085" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout-sw600dp/fragment_item_list.xml" value="0.1" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_home.xml" value="0.1484375" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_item_detail.xml" value="0.1526268115942029" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_job_list.xml" value="0.14" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_job_offer.xml" value="0.1140625" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/fragment_item_detail.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/fragment_item_list.xml" value="0.1526268115942029" />
-        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/job_item.xml" value="0.1" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/activity_job_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/activity_job_offer.xml" value="0.2671875" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/activity_maps.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/layout/main.xml" value="0.25" />
-        <entry key="..\:/Users/brian/Documents/GitHub/HiJob/app/src/main/res/menu/menu_navigation.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/item_list_content.xml" value="0.1" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/job_detail.xml" value="0.25" />
+        <entry key="..\:/Users/54113/AndroidStudioProjects/HiJob/app/src/main/res/layout/job_item.xml" value="0.18" />
       </map>
     </option>
   </component>

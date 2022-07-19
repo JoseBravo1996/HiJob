@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hijob.entities.Job
 import com.example.hijob.R
 import com.example.hijob.databinding.JobItemBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class JobAdapter(private val jobList: MutableList<Job>, private val listener: OnJobListener) :
 RecyclerView.Adapter<JobAdapter.ViewHolder>()
@@ -29,11 +31,15 @@ RecyclerView.Adapter<JobAdapter.ViewHolder>()
         holder.binding.jobId.text = job.id
         holder.binding.jobCompany.text = job.company
         holder.binding.jobPosition.text = job.position
-        holder.binding.jobDate.text = job.date.toString()
+        holder.binding.jobDate.text = getDate(job.date!!).toString()
     }
     fun add(job: Job){
         jobList.add(job)
         notifyItemInserted(jobList.size - 1)
+    }
+
+    private fun getDate(time: Date): String? {
+        return SimpleDateFormat("dd/MM/yyyy").format(time)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){

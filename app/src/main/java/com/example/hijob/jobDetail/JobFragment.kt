@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.hijob.entities.Job
 import com.example.hijob.databinding.JobDetailBinding
 
@@ -39,8 +40,9 @@ class JobFragment : Fragment() {
 
     private fun updateUI(job: Job){
         binding?.let {
-            it.heading.text = job.description
-            it.positionT.text = job.position
+            it.heading.text = job.position
+            it.positionT.text = job.description
+            Glide.with(it.profileImage).load(job.photo).into(it.profileImage)
         }
     }
 }
