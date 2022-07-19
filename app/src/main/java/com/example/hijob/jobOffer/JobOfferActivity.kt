@@ -46,7 +46,7 @@ class JobOfferActivity : AppCompatActivity(), OnJobListener, JobAux {
 
                 R.id.maps -> {
                     val intent: Intent = Intent(this, MapsActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnItemSelectedListener true
@@ -54,7 +54,7 @@ class JobOfferActivity : AppCompatActivity(), OnJobListener, JobAux {
 
                 R.id.user -> {
                     val intent: Intent = Intent(this, UserActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnItemSelectedListener true

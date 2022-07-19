@@ -38,7 +38,7 @@ class UserActivity : AppCompatActivity() {
             when(menuItem.itemId) {
                 R.id.home -> {
                     val intent: Intent = Intent(this, JobOfferActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnItemSelectedListener true
@@ -46,7 +46,7 @@ class UserActivity : AppCompatActivity() {
 
                 R.id.maps -> {
                     val intent: Intent = Intent(this, MapsActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnItemSelectedListener true
