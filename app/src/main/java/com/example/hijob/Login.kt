@@ -57,7 +57,7 @@ class Login : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                   //     auth.currentUser?.let { it1 -> prefs.saveUser(it1) }
+                        auth.currentUser?.let { it1 -> prefs.saveUser(it1) }
                         val intent = Intent(this, JobOfferActivity::class.java)
                         startActivity(intent)
                     } else {
@@ -73,7 +73,6 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
@@ -102,11 +101,12 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                       Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                  //  if (user != null) {
-                    //    prefs.saveUser(user)
-                    //}
+                    if (user != null) {
+                        prefs.saveUser(user)
+                    }
+                    val intent = Intent(this, JobOfferActivity::class.java)
+                    startActivity(intent)
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.

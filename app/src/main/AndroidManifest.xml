@@ -15,6 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HiJob">
+        <activity
+            android:name=".UserActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -35,7 +38,6 @@
         <activity
             android:name=".jobOffer.JobOfferActivity"
             android:theme="@style/Theme.HiJob" />
-
         <activity
             android:name=".Login"
             android:exported="false"
