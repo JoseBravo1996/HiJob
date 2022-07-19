@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hijob.MapsActivity
 import com.example.hijob.R
+import com.example.hijob.UserActivity
 import com.example.hijob.databinding.ActivityJobOfferBinding
 import com.example.hijob.entities.Job
 import com.example.hijob.jobDetail.JobAux
@@ -45,6 +46,14 @@ class JobOfferActivity : AppCompatActivity(), OnJobListener, JobAux {
 
                 R.id.maps -> {
                     val intent: Intent = Intent(this, MapsActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.user -> {
+                    val intent: Intent = Intent(this, UserActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)

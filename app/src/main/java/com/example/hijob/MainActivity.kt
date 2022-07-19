@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.hijob.databinding.ActivityMainBinding
+import com.example.hijob.jobOffer.JobOfferActivity
 import com.example.hijob.sesion.UserApplication.Companion.prefs
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.CredentialSavingClient
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToHome(){
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, JobOfferActivity::class.java)
         startActivity(intent)
     }
 
